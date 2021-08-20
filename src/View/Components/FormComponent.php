@@ -7,7 +7,9 @@ abstract class FormComponent extends Component
     public function render()
     {
         return function (array $data) {
-            return view($this->getView(), $this->mergeAttributes($data))->render();
+            $content = view($this->getView(), $this->mergeAttributes($data))->render();
+            $content = new FixedComponent($content);
+            return $content->toHtml();
         };
     }
 
