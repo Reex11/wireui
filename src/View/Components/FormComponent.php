@@ -8,7 +8,8 @@ abstract class FormComponent extends Component
     {
         return function (array $data) {
             $content = view($this->getView(), $this->mergeAttributes($data))->render();
-            return new FixedComponent($content);
+            $content = new FixedComponent($content);
+            return $content->toHtml();
         };
     }
 
