@@ -6,9 +6,12 @@ abstract class FormComponent extends Component
 {
     public function render()
     {
-        return function (array $data) {
-            return view($this->getView(), $this->mergeAttributes($data))->render();
-        };
+
+        return view($this->getView(), ['readonly' => false, 'disabled' => false, 'name' => 'test', 'id' => 'test']);
+
+        // return function (array $data) {
+        //     return view($this->getView(), $this->mergeAttributes($data))->render();
+        // };
     }
 
     abstract protected function getView(): string;
